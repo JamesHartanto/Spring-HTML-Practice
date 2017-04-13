@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<table>
+<table> TOP 10
     <tr>
         <th>name</th>
         <th>description</th>
@@ -19,6 +19,32 @@
         <td th:text="${leader.getDescription()}">Description</td>
         <td th:text="${leader.getAge()}">Age Range</td>
         <td th:text="${leader.getScore()}">Score</td>
+    </tr>
+</table>
+
+<br />
+
+<form action="leaderboard.html" th:action="@{/results}" method="get">
+    <label>
+        <span>Search:</span>
+        <input type="text" name="name" value="" th:value="${name}"/>
+    </label>
+    <button>Search by Name</button>
+</form>
+
+<table>
+    <tr>
+        <th>name</th>
+        <th>description</th>
+        <th>age</th>
+        <th>score</th>
+    </tr>
+
+    <tr th:each="player : ${filter}">
+        <td th:text="${player.getName()}">Name</td>
+        <td th:text="${player.getDescription()}">Description</td>
+        <td th:text="${player.getAge()}">Age Range</td>
+        <td th:text="${player.getScore()}">Score</td>
     </tr>
 </table>
 

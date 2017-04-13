@@ -41,8 +41,9 @@ public class LoginController {
 
     // Results
     @RequestMapping("/results")
-    public String leaderboardResults(Model model) throws SQLException {
+    public String leaderboardResults(Model model,String name) throws SQLException {
         model.addAttribute("leaderboard",repo.listTopTen());
+        model.addAttribute("filter",repo.filterData(name));
         return "leaderboard";
     }
 

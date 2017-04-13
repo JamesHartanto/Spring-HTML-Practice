@@ -39,4 +39,19 @@ public class LeaderboardRepo {
                 player.getAge(),
                 player.getScore());
     }
+
+    // Filter data from database
+    public List<Player> filterData(String name) throws SQLException{
+        return template.query("SELECT * from leaderboard " +
+                        "WHERE lower(name)=lower(?) " +
+                        "ORDER BY score DESC",
+                new Object[]{name},
+                (resultSet ,row) -> new Player(
+                        resultSet.getInt("leaderboard_id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description"),
+                        resultSet.getString("age"),
+                        resultSet.getInt("score")
+                ));
+    }
 }
