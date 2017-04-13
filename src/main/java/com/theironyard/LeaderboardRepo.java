@@ -18,9 +18,8 @@ public class LeaderboardRepo {
 
     // List leaderboard
     public List<Player> listTopTen(){
-        return template.query("SELECT * FROM leaderboard ORDER BY score",
+        return template.query("SELECT * FROM leaderboard ORDER BY score DESC limit 10",
                 (rs, row) -> new Player(
-                        rs.getInt("leaderboard_id"),
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getString("age"),
@@ -31,9 +30,13 @@ public class LeaderboardRepo {
 
     // Insert data into database
     public void insertData(Player player) throws SQLException {
-        template.execute("INSERT INTO leaderboard " +
+        template.update("INSERT INTO leaderboard " +
                 "(name,description,age,score) " +
                 "VALUES " +
-                "(player.getName(), player.getDescription, player.getAge, player.getScore)");
+                "(?,?,?,?)",
+                player.getName(),
+                player.getDescription(),
+                player.getAge(),
+                player.getScore());
     }
 }

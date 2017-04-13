@@ -14,11 +14,11 @@
         <th>score</th>
     </tr>
 
-    <tr th:each="leaderboard : ${leaderboard}">
-        <td th:text="${leaderboard.getName()}">Name</td>
-        <td th:text="${leaderboard.getDescription()}">Description</td>
-        <td th:text="${leaderboard.getAge()}">Age Range</td>
-        <td th:text="${leaderboard.getScore()}">Score</td>
+    <tr th:each="leader : ${leaderboard}">
+        <td th:text="${leader.getName()}">Name</td>
+        <td th:text="${leader.getDescription()}">Description</td>
+        <td th:text="${leader.getAge()}">Age Range</td>
+        <td th:text="${leader.getScore()}">Score</td>
     </tr>
 </table>
 
