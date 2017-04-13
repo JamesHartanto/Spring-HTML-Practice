@@ -6,13 +6,17 @@
 </head>
 <body>
 
-    <form action="leaderboard.html" th:action="@{'/leaderboard'}">
+<a href="index.html" th:href="@{/}">Whoops I made a typo...</a>
+    <form action="leaderboard.html" th:action="@{'/save'}" method="post">
 
-    <p>Welcome <span th:text="${name}">Name</span>!
-        You are <span th:text="${age}"></span> years old!</p>
-    <p>You described yourself as:
-        <span th:text="${description}">Description</span>!</p>
+    <p>Welcome <span name="name" th:text="${name}">Name</span>!
+        You are <span name="age" th:text="${age}"></span> years old!</p>
+    <p>You described yourself as:<span name="description" th:text="${description}">Description</span>!</p>
 
+        <!--making data persist... hopefully-->
+        <input type="hidden" name="name" th:value="${name}" />
+        <input type="hidden" name="age" th:value="${age}" />
+        <input type="hidden" name="description" th:value="${description}"/>
 
     Score:
     <input name="score" type="text" /><br />

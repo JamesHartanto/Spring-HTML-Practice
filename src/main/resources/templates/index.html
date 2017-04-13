@@ -8,9 +8,9 @@
 
 <h1>Before you enter...</h1>
 
-    <form action="Welcome.html" th:action="@{'/Welcome'}">
+    <form action="Welcome.html" th:action="@{'/Welcome'}" method="post">
         Please enter your name:
-        <input name="name" type="text" /> <br />
+        <input name="name" type="text" value="" required="required"/> <br />
         How old are you?
         <select name="age">
             <option value ="0-9">0 - 9</option>
@@ -23,7 +23,7 @@
             <option value ="70-79">70 - 79</option>
         </select> <br />
         Describe yourself in a few words:
-        <input name="description" type="text" /><br />
+        <input name="description" type="text" required="required"/><br />
         <button>
             SUBMIT
         </button>
